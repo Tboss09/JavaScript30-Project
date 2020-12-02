@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>Flex Gallery</title>
+
+</head>
+
+<body>
+    <div class="panels">
+        <div class="panel panel1">
+            <p>Hey</p>
+            <p>Let's</p>
+            <p>Dance</p>
+        </div>
+        <div class="panel panel2">
+            <p>You Gatz to</p>
+            <p>Give</p>
+            <p>It your best</p>
+        </div>
+        <div class="panel panel3 ">
+            <p>Experience</p>
+            <p>It</p>
+            <p>Today</p>
+        </div>
+        <div class="panel panel4">
+            <p>Give</p>
+            <p>Our</p>
+            <p>You Got</p>
+        </div>
+        <div class="panel panel5">
+            <p>Do your </p>
+            <p>Best</p>
+            <p>leave the rest</p>
+        </div>
+    </div>
+
+    <script>
+        const panels = document.querySelectorAll(".panel");
+
+        function flexGallery() {
+            this.classList.toggle('open')
+        }
+        
+        function toggleActive(e){
+            console.log(e.propertyName);
+            if(e.propertyName.includes("flex")){
+                this.classList.toggle('open-active')
+
+            }
+        }
+        panels.forEach(panel => panel.addEventListener("click", flexGallery))
+        panels.forEach(panel => panel.addEventListener("transitionend", toggleActive))
+    </script>
+</body>
+
+</html>

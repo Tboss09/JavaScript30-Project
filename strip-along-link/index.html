@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>Follow Along Links</title>
+</head>
+
+<body>
+    <nav class="cool">
+        <div class="dropdownBackground">
+            <span class="arrow"></span>
+        </div>
+
+        <ul class="cool">
+            <li>
+                <a href="#">About Me</a>
+                <div class="dropdown dropdown1">
+
+
+                    <div class="bio">
+                        <img src="images/IMG_20200303_112011.jpg" alt="A tall handsome boy Snappedchatted">
+                        <p>Tayo Akosile sure does love web development. He teaches things like Javascript, CSS and BBQ,
+                            BBQ isnt part of web development </p>
+                    </div>
+                </div>
+            </li>
+
+
+            <li>
+                <a href="#">Courses</a>
+                <ul class="dropdown courses">
+                    <li>
+                        <span class="code">RFB</span>
+                        <a href="#">React For Beginniers</a>
+                    </li>
+
+
+                    <li>
+                        <span class="code">ES6</span>
+                        <a href="#">ES6 For Beginniers</a>
+                    </li>
+
+
+                    <li>
+                        <span class="code">STRUP</span>
+                        <a href="#">What is the flexbox </a>
+                    </li>
+
+
+                    <li>
+
+                        <a href="#">Ohter Links</a>
+                        <ul class="dropdown dropdonw1">
+                            <li><a href="#twitter" class="button">Twitter</a></li>
+                            <li><a href="#facebook" class="button">Facebook</a></li>
+                            <li><a href="#github" class="button">Github</a></li>
+                            <li><a href="#instagram" class="button">Instagram</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <script>
+        const triggers = document.querySelectorAll(".cool > li");
+        const background = document.querySelector(".dropdownBackground");
+        const nav = document.querySelector(".top");
+
+        function handleEnter() {
+
+        }
+
+        function handleLeave() {
+console.log("Leave");
+        }
+        triggers.forEach(trigger => trigger.addEventListener("mouseenter",handleEnter))
+    </script>
+</body>
+
+</html>

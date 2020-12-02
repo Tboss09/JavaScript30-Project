@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using Reduce</title>
+</head>
+
+<body>
+    <div class="">
+        <span data-no="10:10"></span>
+        <span data-no="20:50"></span>
+        <span data-no="30:30"></span>
+        <span data-no="60:10"></span>
+        <span data-no="20:5"></span>
+        <span data-no="5:20"></span>
+        <span data-no="10:50"></span>
+        <span data-no="15:30"></span>
+        <span data-no="60:20"></span>
+        <span data-no="40:50"></span>
+    </div>
+</body>
+<script>
+    const timeNodes = [...document.querySelectorAll("[data-no]")];
+    const timeCode = timeNodes.
+    map(time => time.dataset.no)
+        .map(time => {
+            const [mins, sec] = time.split(":")
+            return (mins * 60) + sec;
+        }).map(parseFloat)
+        .reduce((total, each) => {
+            return total + each;
+        });
+    let secondsLeft = timeCode;
+
+    const hours = Math.floor(secondsLeft / 3600);
+    secondsLeft = secondsLeft % 3600;
+    
+    const mins = Math.floor(secondsLeft / 60);
+    secondsLeft = secondsLeft % 60;
+
+    console.log(hours,mins,"mins");
+
+
+</script>
+
+</html>

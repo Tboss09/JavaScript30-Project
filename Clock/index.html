@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/materialize.css">
+    <title>CSS CLOCK </title>
+    <style>
+        html {
+            background: #0275d8;
+            font-family: "poppins";
+        }
+
+        .clock {
+            width: 31rem;
+            height: 31rem;
+            border: 20px solid white;
+            border-radius: 50%;
+            margin: 50px auto;
+            position: relative;
+            padding: 30px 0px;
+            max-width: 100%;
+        }
+
+        .hand {
+            position: absolute;
+            width: 45%;
+            height: 4px;
+            background: #000;
+            top: 49%;
+            transform-origin: 100%;
+            transform: rotate(90deg);
+            transition: all 0.09s;
+            transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+            margin: 20px;
+        }
+
+        .circle {
+            width: 35px;
+            height: 35px;
+            position: relative;
+            top: 180px;
+            right: -196px;
+            z-index: 10;
+        }
+        
+        .hour-hand{
+            width: 30%;
+            left: 15%;
+            background: green; 
+
+        }
+
+        .min-hand{
+            width: 35%;
+            left: 10%;
+            background: grey;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h4 class="center section ">CSS CLOCK VARIABLE</h4>
+        <div class="clock container">
+            <div class="clock-face">
+
+                <div class="hand hour-hand">
+                </div>
+                <div class="circle white"></div>
+                <div class="hand min-hand">
+                </div>
+
+                <div class="hand second-hand"></div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        const sec = document.querySelector(".second-hand");
+        const mins = document.querySelector(".min-hand");
+        const hour = document.querySelector(".hour-hand");
+
+        function setDate() {
+            const date = new Date();
+
+
+            const s = date.getSeconds();
+            const secondDegree = ((s / 60) * 360) + 90;
+            sec.style.transform = `rotate(${secondDegree}deg)`;
+
+            const min = date.getMinutes();
+            const minDegree = ((min / 60) * 360) + 90;
+            mins.style.transform = `rotate(${minDegree}deg)`;
+            console.log(minDegree );
+
+
+            const hourDegree = ((min / 12) * 360) + 90;
+            hour.style.transform = `rotate(${hourDegree}deg)`;
+            console.log(hourDegree );
+        }
+
+        setInterval(setDate, 1000);
+    </script>
+   
+</body>
+
+</html>

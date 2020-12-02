@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konami Code</title>
+</head>
+<style>
+    .center{
+        font-family: "poppins";
+        text-align: center;
+        margin-top: 60px;
+        font-size: 20px;
+    }
+    .none{
+        display: none;
+    }
+</style>
+<body>
+    <p class="center">Type in the secret code ("Tayo") to see the magic </p>
+    <canvas id="draw" width="100" height="100"> </canvas>
+    <script>
+        const pressed = [];
+        const secretCode = 'tayo';
+        const canvas = document.querySelector("#draw");
+
+        function getsecretCode(e) {
+            pressed.push(e.key)
+            pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length)
+            console.log(pressed);
+            if (pressed.join("").includes(secretCode)) {
+                console.log("Bingo");
+              document.querySelector("p").classList.add("none")
+                canvas.style.background = "red"
+                return;
+            }
+
+            canvas.style.background = "";
+        }
+        window.addEventListener("keyup", getsecretCode)
+        window.addEventListener("DOMContentLoaded", ()=>{
+                setTimeout(() => {
+                    console.log("dom loaded");
+                    
+                }, 2000);
+            })
+    </script>
+</body>
+
+</html>

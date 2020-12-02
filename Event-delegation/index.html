@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Local Storage/ Event Delegation</title>
+</head>
+
+<body>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="styles/main.css" rel="stylesheet">
+    <div class="wrapper">
+        <h2>LOCAL TAPAS</h2>
+        <p></p>
+        <ul class="plates">
+            <li>Loading Tapas...</li>
+        </ul>
+        <form action="#" class="add-items">
+            <input name="item" placeholder="Item Name" required="" type="text"> <input type="submit" value="+ Add item">
+        </form>
+        <div class="buttons">
+            <button class="btn-1" data-set="1">Uncheck All</button>
+            <button class="btn-2" data-set="2">Check All</button>
+            <button class="btn-3" data-set="3">Clear All</button>
+        </div>
+    </div>
+
+    <script>
+        const addItems = document.querySelector(".add-items")
+        const itemsList = document.querySelector(".plates");
+        const items = JSON.parse(localStorage.getItem("myItems")) || [];
+        const buttons = document.querySelector(".buttons")
+
+        function addItem(e) {
+            e.preventDefault();
+            const text = (this.querySelector("[name=item]")).value;
+            const item = {
+                text,
+                done: false
+            }
+            items.push(item);
+            this.reset();
+            populateList(items, itemsList);
+            localStorage.setItem("myItems", JSON.stringify(items))
+        }
+
+        function populateList(plates = [], plateList) {
+            plateList.innerHTML = plates.map((plate, i) => {
+                return `
+                <li>
+                    <input type="checkbox" data-index ="${i}" id="item-${i}" ${plate.done ? "checked" : ""}>
+                    <label for="item-${i}">${plate.text}</label>
+                    </li>
+            
+                `;
+            }).join("");
+
+        }
+
+        function toggleClicks(e) {
+            if (!e.target.matches("input")) return;
+            const el = e.target.dataset.index;
+            items[el].done = !items[el].done;
+            localStorage.setItem("myItems", JSON.stringify(items))
+
+            console.log(el);
+        }
+
+        function toggleButtons(e) {
+            const el = e.target.dataset.set;
+            const allCheckBox = itemsList.querySelectorAll("input");
+
+            if (el == (1)) { //If the dirst button was clicked(green)
+                allCheckBox.forEach(checkbox => {
+                    checkbox.checked = false;
+                    localStorage.setItem("checkbox1", false)
+
+                })
+            }
+
+
+            if (el == (2)) { //If the second button was clicked (blue)
+                allCheckBox.forEach(checkbox => {
+                    checkbox.checked = true;
+                    localStorage.setItem("checkbox2", true)
+                })
+            }
+            if (el == (3)) {//If the third button was clicked (red)
+                console.log("Button red clicked");
+                itemsList.innerHTML = ''
+                localStorage.removeItem("myItems", JSON.stringify(items))
+
+            }
+
+            //     allCheckBox.removeChild(lastChild);
+            // }
+        }
+
+        addItems.addEventListener("submit", addItem)
+        itemsList.addEventListener("click", toggleClicks)
+        buttons.addEventListener("click", toggleButtons)
+        populateList(items, itemsList);
+    </script>
+
+
+    <noscript>
+        You need to enable JavaScript to run this app.
+    </noscript>
+</body>
+
+</html>

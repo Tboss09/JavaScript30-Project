@@ -1,0 +1,43 @@
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.5)),
+        url("/images/desktop-image-hero-2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    font-family: "poppins";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+p {
+    font-weight: 600;
+}
+
+.plate {
+    max-width: 100%;
+    width: 15%;
+    display: grid;
+    place-items: center;
+    background: white;
+    padding: 10px;
+}
+
+p {
+    font-size: 1.5rem;
+    white-space: nowrap;
+}
+
+li label {
+    font-family: inherit;
+    font-size: 1.2rem;
+}
+
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+    position: relative !important;
+    opacity: 1;
+    pointer-events: all;
+
+}

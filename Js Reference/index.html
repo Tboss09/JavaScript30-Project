@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Reference VS Copy</title>
+</head>
+<body>
+
+  <script>
+    const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+
+    // and we want to make a copy of it.
+    const team = players;
+
+    console.log(players, team);
+    const team2 = players.slice();
+
+    const team3 = [].concat(players);
+
+    const team4 = [...players];
+    team4[3] = 'Woah';
+    console.log(team4);
+
+    const team5 = Array.from(players);
+
+
+
+    const person = {
+      name: 'Tayo Akosile',
+      age: 80
+    };
+
+    const cap2 = Object.assign({}, person, { number: 99, age: 12 });
+    console.log(cap2);
+
+    const wes = {
+      name: 'Tayo',
+      age: 100,
+      social: {
+        twitter: '@TayoAkosile',
+        facebook: 'Tayo Akosile'
+      }
+    };
+
+    console.clear();
+    console.log(wes);
+
+    const dev = Object.assign({}, wes);
+
+    const dev2 = JSON.parse(JSON.stringify(wes));
+
+
+  </script>
+
+</body>
+</html>

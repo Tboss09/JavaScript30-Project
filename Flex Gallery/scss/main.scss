@@ -1,0 +1,121 @@
+html,
+*,
+*::before,
+*::after {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'poppins', sans-serif;
+    background: #ffff00bb;
+}
+
+/*Panels container  */
+
+.panels {
+    display: flex;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/*Each panel  */
+
+.panel {
+    text-align: center;
+    display: flex;
+    color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    transition:
+    background 0.2s ,
+    font-size 0.5s cubic-bezier(0.61, -0.19, 0.7, -0.11),
+    flex .7s cubic-bezier(0.61, -0.19, 0.7, -0.11);
+    font-size: 20px;
+    
+
+    /*All elemnt inside each panel  */
+
+
+    &>* {
+        width: 100%;
+        flex: 1 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.2s ease-in-out;
+
+        &:first-child {
+            transform: translateY(-100%);
+        }
+
+
+        &:last-child {
+            transform: translateY(100%);
+        }
+
+
+    }
+
+
+    &.open-active {
+        &>* {
+
+            &:first-child {
+                transform: translateY(0%);
+            }
+
+
+            &:last-child {
+                transform: translateY(0%);
+            }
+        }
+    }
+
+    &.open {
+        flex: 5;
+        font-size: 40px;
+        & p:nth-child(2) {
+            font-size: 2.5em;
+        }
+    }
+
+
+
+
+    /*bg images for each panel*/
+
+    &1 {
+        background:
+            linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9)),
+            url("../Images/pexels-daria-shevtsova-1030883.jpg");
+    }
+
+    &2 {
+        background:
+            linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
+            url("../Images/pexels-daria-shevtsova-1030940.jpg");
+    }
+
+    &3 {
+        background:
+            linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
+            url("../Images/pexels-daria-shevtsova-709810.jpg");
+    }
+
+    &4 {
+        background:
+            linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
+            url("../Images/pexels-drew-williams-2608410.jpg");
+    }
+
+    &5 {
+        background: url("../Images/pexels-drew-williams-2608495.jpg");
+    }
+
+}
